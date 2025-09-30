@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Completo de IA para Pesquisa Acadêmica</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #34495e;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .warning-banner {
+            background: var(--accent);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 5px solid #c0392b;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tool-card.manus {
+            border-left-color: #e74c3c;
+        }
+        
+        .tool-card.deepseek {
+            border-left-color: #2ecc71;
+        }
+        
+        .tool-card.copilot {
+            border-left-color: #0078d4;
+        }
+        
+        .tool-card.notebooklm {
+            border-left-color: #ff6b6b;
+        }
+        
+        .tool-card.gemini {
+            border-left-color: #4285f4;
+        }
+        
+        .tool-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .link-btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 0.5rem 0;
+            transition: background 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .link-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .best-use {
+            background: #d5f4e6;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--success);
+        }
+        
+        .danger {
+            background: #ffeaa7;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--warning);
+        }
+        
+        .script-example {
+            background: #2c3e50;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            overflow-x: auto;
+        }
+        
+        .script-example .comment {
+            color: #7fdbff;
+            font-style: italic;
+        }
+        
+        .script-example .command {
+            color: #2ecc71;
+            font-weight: bold;
+        }
+        
+        .golden-rules {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .rules-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .rules-list li {
+            padding: 0.8rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .rules-list li:before {
+            content: "⚠️";
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+        
+        .use-case {
+            background: #e3f2fd;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            border-left: 4px solid #2196f3;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            color: var(--dark);
+            opacity: 0.8;
+            border-top: 1px solid #bdc3c7;
+        }
+        
+        .step-by-step {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            border: 1px solid #dee2e6;
+        }
+        
+        .step {
+            margin: 0.5rem 0;
+            padding-left: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .tool-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Guia Completo de IA para Pesquisa Acadêmica</h1>
+            <p class="subtitle">Ferramentas inteligentes, exemplos práticos e scripts para sua dissertação</p>
+        </header>
+
+        <div class="warning-banner">
+            ⚠️ ATENÇÃO: As IAs são ferramentas de apoio. Você é o autor final e responsável pelo trabalho!
+            <br>Revise sempre as referências e mantenha sua voz acadêmica.
+        </div>
+
+        <div class="tools-grid">
+            <!-- Manus Card -->
+            <div class="tool-card manus">
+                <h3>🧠 Manus IA</h3>
+                <p><strong>Generativa - Poderosa mas exige cuidado extremo</strong></p>
+                <a href="https://manus.im/invitation/JD29QPVBH9F7DEU" class="link-btn" target="_blank">Acessar Manus IA</a>
+                
+                <div class="best-use">
+                    <strong>🎯 Aplicações Ideais:</strong> Reescrever trechos complexos, sintetizar múltiplas fontes, comparar teorias, gerar estruturas alternativas.
+                </div>
+                
+                <div class="use-case">
+                    <strong>📝 Exemplo Prático:</strong> Você tem 3 artigos sobre "metodologias ágeis" e precisa criar uma revisão bibliográfica comparativa.
+                </div>
+                
+                <div class="script-example">
+                    <span class="comment"># Script para revisão bibliográfica comparativa</span><br>
+                    <span class="command">"Analise estes 3 artigos sobre metodologias ágeis e crie uma revisão bibliográfica comparativa que:<br>
+                    - Compare as abordagens de Scrum, Kanban e XP<br>
+                    - Destaque pontos de convergência e divergência<br>
+                    - Mantenha minha estrutura atual de capítulo<br>
+                    - Use linguagem acadêmica formal<br>
+                    - <strong>INDIQUE EXPLICITAMENTE</strong> as referências utilizadas de cada artigo<br>
+                    - Não invente citações ou referências<br>
+                    - Preserve minha voz e estilo de escrita"</span>
+                </div>
+                
+                <div class="danger">
+                    <strong>🚨 PERIGO CRÍTICO:</strong> Inventa referências bibliográficas!
+                    <div class="step-by-step">
+                        <strong>Procedimento de Segurança:</strong>
+                        <div class="step">1. Solicite a lista completa de referências usadas</div>
+                        <div class="step">2. Confira cada citação no original</div>
+                        <div class="step">3. Use o DeepSeek para verificar consistência</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DeepSeek Card -->
+            <div class="tool-card deepseek">
+                <h3>🔍 DeepSeek</h3>
+                <p><strong>Analista de Texto e Verificador de Integridade</strong></p>
+                <a href="https://chat.deepseek.com/" class="link-btn" target="_blank">Acessar DeepSeek</a>
+                
+                <div class="best-use">
+                    <strong>🎯 Aplicações Ideais:</strong> Auditoria de plágio, análise de coerência, identificação de lacunas, verificação de contradições.
+                </div>
+                
+                <div class="use-case">
+                    <strong>📝 Exemplo Prático:</strong> Você terminou um capítulo e quer verificar se há inconsistências ou plágio não intencional.
+                </div>
+                
+                <div class="script-example">
+                    <span class="comment"># Script para análise completa de capítulo</span><br>
+                    <span class="command">"Analise este capítulo da minha dissertação e:<br>
+                    1. Identifique possíveis plágios não intencionais<br>
+                    2. Aponte contradições entre os argumentos<br>
+                    3. Sugira lacunas na argumentação<br>
+                    4. Verifique se as referências citadas no texto estão na bibliografia<br>
+                    5. Faça 5 perguntas que poderiam fortalecer esta seção<br>
+                    6. Analise a coerência entre introdução, desenvolvimento e conclusão"</span>
+                </div>
+                
+                <div class="step-by-step">
+                    <strong>Fluxo de Trabalho Recomendado:</strong>
+                    <div class="step">1. Upload do PDF completo</div>
+                    <div class="step">2. Análise de integridade</div>
+                    <div class="step">3. Verificação de plágio</div>
+                    <div class="step">4. Identificação de melhorias</div>
+                </div>
+            </div>
+
+            <!-- Copilot Card -->
+            <div class="tool-card copilot">
+                <h3>✍️ Microsoft Copilot</h3>
+                <p><strong>Revisor de Texto e Assistente de Escrita</strong></p>
+                
+                <div class="best-use">
+                    <strong>🎯 Aplicações Ideais:</strong> Correção gramatical, aprimoramento de clareza, sugestões de vocabulário acadêmico.
+                </div>
+                
+                <div class="use-case">
+                    <strong>📝 Exemplo Prático:</strong> Você escreveu um parágrafo importante mas acha que pode estar muito repetitivo ou com linguagem fraca.
+                </div>
+                
+                <div class="script-example">
+                    <span class="comment"># Script para refinamento de parágrafo</span><br>
+                    <span class="command">"Revise este parágrafo academicamente:<br><br>
+                    [COLE SEU PARÁGRAFO AQUI]<br><br>
+                    - Corrija erros gramaticais e ortográficos<br>
+                    - Sugira sinônimos para palavras repetitivas<br>
+                    - Mantenha EXATAMENTE o mesmo significado<br>
+                    - Preserve minha voz e estilo de escrita<br>
+                    - Não altere a estrutura argumentativa<br>
+                    - Use linguagem acadêmica apropriada<br>
+                    - Destaque as alterações sugeridas"</span>
+                </div>
+                
+                <div class="step-by-step">
+                    <strong>Metodologia Eficiente:</strong>
+                    <div class="step">• Trabalhe parágrafo por parágrafo</div>
+                    <div class="step">• Compare versões antes/depois</div>
+                    <div class="step">• Mantenha controle sobre cada alteração</div>
+                </div>
+            </div>
+
+            <!-- Notebook LM Card -->
+            <div class="tool-card notebooklm">
+                <h3>📓 Notebook LM</h3>
+                <p><strong>Assistente de Pesquisa Multimodal Premium</strong></p>
+                
+                <div class="best-use">
+                    <strong>🎯 Aplicações Ideais:</strong> Criação de material de estudo, resumos dinâmicos, flashcards, análise profunda de fontes específicas.
+                </div>
+                
+                <div class="use-case">
+                    <strong>📝 Exemplo Prático:</strong> Você precisa dominar 5 teorias complexas e criar material de estudo para a banca.
+                </div>
+                
+                <div class="script-example">
+                    <span class="comment"># Script para criação de material de estudo</span><br>
+                    <span class="command">"Com base nestes 5 artigos sobre [TEORIA], crie:<br><br>
+                    1. Um resumo comparativo em formato de podcast (script de 5min)<br>
+                    2. 20 flashcards com os conceitos principais<br>
+                    3. Um quadro comparativo das teorias<br>
+                    4. Perguntas que a banca pode fazer sobre cada teoria<br>
+                    5. Um guia de defesa com argumentos principais<br><br>
+                    Mantenha fidelidade absoluta aos textos originais e cite as páginas específicas de cada conceito."</span>
+                </div>
+                
+                <div class="step-by-step">
+                    <strong>Vantagens Exclusivas:</strong>
+                    <div class="step">✓ Integração com email institucional</div>
+                    <div class="step">✓ Limites generosos de uso</div>
+                    <div class="step">✓ Fidelidade ao texto fonte</div>
+                    <div class="step">✓ Saídas multimodais (áudio, texto, visual)</div>
+                </div>
+            </div>
+
+            <!-- Gemini Card -->
+            <div class="tool-card gemini">
+                <h3>🌟 Google Gemini</h3>
+                <p><strong>Especialista em Pesquisa Acadêmica</strong></p>
+                
+                <div class="best-use">
+                    <strong>🎯 Aplicações Ideais:</strong> Pesquisa exploratória, descoberta de literatura, contextualização teórica, busca de gaps na literatura.
+                </div>
+                
+                <div class="use-case">
+                    <strong>📝 Exemplo Prático:</strong> Você precisa encontrar os autores mais relevantes e tendências atuais em sua área de pesquisa.
+                </div>
+                
+                <div class="script-example">
+                    <span class="comment"># Script para mapeamento de literatura</span><br>
+                    <span class="command">"Atue como um pesquisador sênior na área de [SUA ÁREA].<br><br>
+                    Preciso mapear a literatura sobre [MEU TÓPICO] considerando:<br>
+                    1. Autores fundamentais e obras seminal<br>
+                    2. Tendências de pesquisa dos últimos 5 anos<br>
+                    3. Debates atuais na área<br>
+                    4. Periódicos mais relevantes<br>
+                    5. Gaps de pesquisa identificados<br>
+                    6. Metodologias predominantes<br><br>
+                    Forneça referências específicas e verifique a atualidade das informações."</span>
+                </div>
+                
+                <div class="danger">
+                    <strong>Observação Importante:</strong> Pode ser menos fiel ao texto específico que o Notebook LM. Use em conjunto para melhor resultado.
+                </div>
+            </div>
+        </div>
+
+        <div class="golden-rules">
+            <h2>📜 Regras de Ouro Para Uso Responsável de IA</h2>
+            <ul class="rules-list">
+                <li><strong>Autoria Preservada:</strong> Sua voz e estilo devem ser mantidos. A IA é assistente, não autor.</li>
+                <li><strong>Verificação de Referências:</strong> Toda citação e referência deve ser checada manualmente.</li>
+                <li><strong>Transparência:</strong> Se usar IA extensivamente, considere mencionar na metodologia.</li>
+                <li><strong>Revisão em Múltiplas Etapas:</strong> Nunca use conteúdo gerado sem revisão crítica detalhada.</li>
+                <li><strong>Combinação Estratégica:</strong> Use diferentes IAs para diferentes finalidades, aproveitando os pontos fortes de cada uma.</li>
+                <li><strong>Contexto Preservado:</strong> Sempre forneça contexto completo para a IA entender o escopo do trabalho.</li>
+            </ul>
+            
+            <div class="section">
+                <h3>🔄 Fluxo de Trabalho Recomendado</h3>
+                <div class="step-by-step">
+                    <div class="step">1. <strong>Pesquisa:</strong> Gemini + Notebook LM para explorar literatura</div>
+                    <div class="step">2. <strong>Escrita:</strong> Rascunho manual + Copilot para refinamento</div>
+                    <div class="step">3. <strong>Revisão:</strong> Manus para melhorias estruturais (com verificação)</div>
+                    <div class="step">4. <strong>Auditoria:</strong> DeepSeek para verificação final</div>
+                    <div class="step">5. <strong>Preparação:</strong> Notebook LM para material de defesa</div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>💡 <strong>Dica Estratégica:</strong> Crie um "diário de uso de IA" documentando como e quando usou cada ferramenta. Isso ajuda na transparência acadêmica!</p>
+            <p><small>Guia baseado em experiência prática de uso em dissertação acadêmica - Atualizado 2024</small></p>
+        </footer>
+    </div>
+</body>
+</html>
